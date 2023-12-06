@@ -6,9 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+    
     public function up(): void
     {
         Schema::create('funcionarios', function (Blueprint $table) {
@@ -17,12 +15,12 @@ return new class extends Migration
             $table->string('telefone', 20);
             $table->string('email', 50);
             $table->string('cpf', 20);
+            $table->unsignedBigInteger('equipe_id');
+            $table->foreign('equipe_id')->references('id')->on('equipes')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('funcionarios');

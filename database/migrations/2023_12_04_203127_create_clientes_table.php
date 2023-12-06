@@ -18,8 +18,7 @@ return new class extends Migration
             $table->string('email', 50);
             $table->string('cpf', 20);
             $table->string('endereco', 200);
-            $table->unsignedBigInteger('carro_id'); 
-            $table->foreign('carro_id')->references('id')->on('carros'); 
+            $table->timestamps();
         });
     }
 

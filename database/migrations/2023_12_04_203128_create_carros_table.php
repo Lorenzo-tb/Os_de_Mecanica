@@ -18,6 +18,9 @@ return new class extends Migration
             $table->string('cor', 45);
             $table->year('ano');
             $table->string('numeroChassi', 45);
+            $table->unsignedBigInteger('cliente_id'); 
+            $table->foreign('cliente_id')->references('id')->on('clientes');
+            $table->timestamps();
         });
     }
 

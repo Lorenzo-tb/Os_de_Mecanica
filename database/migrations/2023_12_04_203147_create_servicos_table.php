@@ -21,12 +21,11 @@ return new class extends Migration
             $table->tinyInteger('aprovado');
             $table->date('pronto');
             $table->date('entregue');
-            $table->unsignedBigInteger('peca_id'); 
-            $table->foreign('peca_id')->references('id')->on('pecas'); 
-            $table->unsignedBigInteger('cliente_id'); 
-            $table->foreign('cliente_id')->references('id')->on('clientes');
             $table->unsignedBigInteger('equipe_id'); 
             $table->foreign('equipe_id')->references('id')->on('equipes');
+            $table->unsignedBigInteger('carro_id'); 
+            $table->foreign('carro_id')->references('id')->on('carros'); 
+            $table->timestamps();
         });
     }
 

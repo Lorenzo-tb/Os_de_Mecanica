@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('amd', function (Blueprint $table) {
-            $table->id();
-            $table->string('nome');
-            $table->string('cpf');
-            $table->string('senha');
+        Schema::create('servico_has_peca', function (Blueprint $table) {
+            $table->unsignedBigInteger('peca_id'); 
+            $table->foreign('peca_id')->references('id')->on('pecas');
+            $table->unsignedBigInteger('servico_id'); 
+            $table->foreign('servico_id')->references('id')->on('servicos'); 
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('amd');
+        Schema::dropIfExists('servico_has_peca');
     }
 };
