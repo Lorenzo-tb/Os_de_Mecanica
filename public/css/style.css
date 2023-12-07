@@ -1,0 +1,13 @@
+body{
+    background-color: #D5D3D3 !important;
+    width: 99vw;
+}
+
+.titulo{
+    height: 8vh;
+    width: 100%;
+}
+
+.meu-nav{
+    width: 100%;
+}

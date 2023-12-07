@@ -1,0 +1,10 @@
+body {
+    margin: 0; /* Remove margens padrão do corpo da página */
+    padding: 0; /* Remove preenchimento padrão do corpo da página */
+    background-image: url('../images/fundoLogin.jpg'); /* Caminho para a sua imagem de fundo */
+    background-size: cover; /* Garante que a imagem cobre toda a tela */
+    background-position: center; /* Centraliza a imagem na tela */
+    background-repeat: no-repeat; /* Evita a repetição da imagem */
+    max-width: 99vw;
+    max-height: 100vh; /* Define a altura da tela como 100% da altura visível do dispositivo */
+}

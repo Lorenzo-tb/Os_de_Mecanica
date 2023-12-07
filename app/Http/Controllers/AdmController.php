@@ -25,7 +25,7 @@ class AdmController extends Controller
         // Verifica se o usuário foi encontrado
         if ($usuario) {
             // Usuário autenticado com sucesso
-            return redirect()->route('clientes.index');
+            return redirect()->route('menu.index');
         } else {
             // Usuário não encontrado
             return redirect()->back()->with('error', 'Credenciais inválidas. Tente novamente.');

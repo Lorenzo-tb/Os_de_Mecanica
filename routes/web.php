@@ -7,12 +7,17 @@ use App\Http\Controllers\FuncionarioController;
 use App\Http\Controllers\PecaController;
 use App\Http\Controllers\EquipeController;
 use App\Http\Controllers\CarroController;
+use App\Http\Controllers\ServicoController;
 
 
-Route::get('/', function () {
+Route::get('/login', function () {
     return view('login');
 });
-Route::post('/', [AdmController::class, 'login'])->name('adm.login');
+Route::post('/login', [AdmController::class, 'login'])->name('adm.login');
+
+Route::get('/', function(){
+    return view('menu');
+})->name('menu.index');
 
 
 Route::get('/cadastroClientes', [ClienteController::class, 'viewCadastroClientes']);
@@ -33,3 +38,7 @@ Route::post('/cadastroEquipes', [EquipeController::class, 'store'])->name('equip
 
 Route::get('/cadastroCarros', [CarroController::class, 'viewCadastroCarros']);
 Route::post('/cadastroCarros', [CarroController::class, 'store'])->name('carros.insert');
+
+Route::get('/servicos', [ServicoController::class, 'viewServicos'])->name('servicos.index');
+Route::get('/cadastroServicos', [ServicoController::class, 'viewCadastroServicos']);
+Route::post('/cadastroServicos', [ServicoController::class, 'store'])->name('servicos.insert');
