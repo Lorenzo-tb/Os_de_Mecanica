@@ -59,41 +59,41 @@
             <div class="row mt-5">
                 <div class="col-4"></div>
                 <div class="col-4">
-                    <button type="button" class="btn btn-dark border border-white meu-botao">
-                        <a href="/servicos" class="text-decoration-none text-white">Serviços</a>
-                    </button>
+                    <a href="/servicos" class="text-decoration-none text-white">
+                        <button type="button" class="btn btn-dark border border-white meu-botao">Serviços</button>
+                    </a>
                 </div>
             </div>
             <div class="row mt-5">
                 <div class="col-4"></div>
                 <div class="col-4">
-                    <button type="button" class="btn btn-dark border border-white meu-botao">
-                        <a href="/pecas" class="text-decoration-none text-white">Peças</a>
-                    </button>
+                    <a href="/pecas" class="text-decoration-none text-white">
+                        <button type="button" class="btn btn-dark border border-white meu-botao">Peças</button>
+                    </a>
                 </div>
             </div>
             <div class="row mt-5">
                 <div class="col-4"></div>
                 <div class="col-4">
-                    <button type="button" class="btn btn-dark border border-white meu-botao">
-                        <a href="/funcionarios" class="text-decoration-none text-white">Funcionários</a>
-                    </button>
+                    <a href="/funcionarios" class="text-decoration-none text-white">
+                        <button type="button" class="btn btn-dark border border-white meu-botao">Funcionários</button>
+                    </a>
                 </div>
             </div>
             <div class="row mt-5">
                 <div class="col-4"></div>
                 <div class="col-4">
-                    <button type="button" class="btn btn-dark border border-white meu-botao">
-                        <a href="/equipes" class="text-decoration-none text-white">Equipes</a>
-                    </button>
+                    <a href="/equipes" class="text-decoration-none text-white">
+                        <button type="button" class="btn btn-dark border border-white meu-botao">Equipes</button>
+                    </a>
                 </div>
             </div>
             <div class="row mt-5">
                 <div class="col-4"></div>
                 <div class="col-4">
-                    <button type="button" class="btn btn-dark border border-white meu-botao">
-                        <a href="/clientes" class="text-decoration-none text-white">Clientes</a>
-                    </button>
+                    <a href="/clientes" class="text-decoration-none text-white">
+                        <button type="button" class="btn btn-dark border border-white meu-botao">Clientes</button>
+                    </a>
                 </div>
             </div>
         </div>

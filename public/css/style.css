@@ -1,6 +1,6 @@
 body{
     background-color: #D5D3D3 !important;
-    width: 99vw;
+    max-width: 99vw;
 }
 
 .titulo{
