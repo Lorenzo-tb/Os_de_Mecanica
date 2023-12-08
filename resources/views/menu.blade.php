@@ -23,10 +23,10 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="/cadastroFuncionarios">Funcionários</a></li>
+                                <li><a class="dropdown-item" href="/cadastroEquipes">Equipe</a></li>
                                 <li><a class="dropdown-item" href="/cadastroPecas">Peça</a></li>
                                 <li><a class="dropdown-item" href="/cadastroClientes">Cliente</a></li>
                                 <li><a class="dropdown-item" href="/cadastroCarros">Carro</a></li>
-                                <li><a class="dropdown-item" href="/cadastroEquipes">Equipe</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown me-5">

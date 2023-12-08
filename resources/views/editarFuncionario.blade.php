@@ -53,85 +53,48 @@
                 </div>
             </div>
         </nav>
-
-
         <div class="bg-secondary mb-5 row">
             <div class="col-1"></div>
             <div class="col-4 mt-2">
                 <h1 class="text-white titulo ms-3">Registro de Funcionários</h1>
             </div>
         </div>
-
-        <div class="row">
+            <div class="row">
                 <div class="col-1"></div>
                 <div class="col-10 rounded bg-white">
-                    <div class="row mt-2">
-                        <div class="col-10"></div>
-                        <div class="col-1 row">
-                            <div class="col-6">
-                                <h2>N: </h2>
-                            </div>
-                            <div class="col-6">
-                                <h2 class="text-danger">{{$servicoAtual}}</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <form action="{{ route('servicos.insert') }}" method="post">
+                <form action="{{ route('funcionarios.update', ['id' => $funcionario->id]) }}" method="post">
                         @csrf 
+                        @method('put')
                         <div class="row mt-5">
-                            <div class="col-2"></div>
-                            <div class="col-8">
+                            <div class="col-1"></div>
+                            <div class="col-4">
                                 <div class="input-group input-group-lg">
-                                    <span class="input-group-text" id="inputGroup-sizing-lg">Entrada</span>
-                                    <input type="date" name="entrada" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" required>
+                                    <span class="input-group-text" id="inputGroup-sizing-lg">Nome</span>
+                                    <input value="{{$funcionario->nome}}" type="text" id="nome" name="nome" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" readonly required>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="row mt-5">
                             <div class="col-2"></div>
-                            <div class="col-8">
+                            <div class="col-4">
                                 <div class="input-group input-group-lg">
-                                    <label class="input-group-text" for="inputGroupSelect01">Carro</label>
-                                    <select class="form-select" id="inputGroupSelect01" name="carro_id" required>
-                                        @foreach($carros as $carro)
-                                            <option value="{{ $carro->id }}">{{ $carro->modelo }}| Placa: {{$carro->placa}}</option>
-                                        @endforeach
-                                    </select>
+                                    <span class="input-group-text" id="inputGroup-sizing-lg">Telefone</span>
+                                    <input value="{{$funcionario->telefone}}" type="text" id="telefone" name="telefone" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" required>
                                 </div>
                             </div>
                         </div>
 
                         <div class="row mt-5">
-                            <div class="col-2"></div>
-                            <div class="col-8">
-                                <div class="input-group">
-                                    <span class="input-group-text">Defeito</span>
-                                    <textarea class="form-control" name="defeito" aria-label="With textarea" required></textarea>
+                            <div class="col-1"></div>
+                            <div class="col-4">
+                                <div class="input-group mb-3 input-group-lg">
+                                    <span class="input-group-text" id="basic-addon1">E-mail @</span>
+                                    <input value="{{$funcionario->email}}" type="text" id="email" name="email" class="form-control" aria-label="Username" aria-describedby="basic-addon1" required>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="row mt-5">
                             <div class="col-2"></div>
-                            <div class="col-8">
-                                <div class="input-group">
-                                    <span class="input-group-text">Conserto</span>
-                                    <textarea class="form-control" name="conserto" aria-label="With textarea" required></textarea>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row mt-5">
-                            <div class="col-2"></div>
-                            <div class="col-8">
-                                <div class="input-group input-group-lg">
-                                    <label class="input-group-text" for="inputGroupSelect01">Peca</label>
-                                    <select class="form-select" id="inputGroupSelect01" name="peca_id" required>
-                                        @foreach($pecas as $peca)
-                                            <option value="{{ $peca->id }}">{{ $peca->nome }} -> R${{$peca->preco}}</option>
-                                        @endforeach
-                                    </select>
+                            <div class="col-4">
+                                <div class="input-group mb-3 input-group-lg">
+                                    <span class="input-group-text" id="basic-addon1">CPF</span>
+                                    <input value="{{$funcionario->cpf}}" type="text" id="cpf" name="cpf" class="form-control" aria-label="Username" aria-describedby="basic-addon1" required>
                                 </div>
                             </div>
                         </div>
@@ -150,55 +113,11 @@
                             </div>
                         </div>
 
-                        <div class="row mt-5">
-                            <div class="col-2"></div>
-                            <div class="col-8">
-                                <div class="input-group input-group-lg">
-                                    <span class="input-group-text" id="inputGroup-sizing-lg">Total</span>
-                                    <input type="number" name="total" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" required>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row mt-5">
-                            <div class="col-2"></div>
-                            <div class="col-8">
-                                <div class="input-group input-group-lg">
-                                    <label class="input-group-text" for="inputGroupSelect01">Aprovado</label>
-                                    <select class="form-select" id="inputGroupSelect01" name="aprovado" required>
-                                        <option value="2">Indefinido</option>
-                                        <option value="1">Aprovado</option>
-                                        <option value="0">Recusado</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row mt-5">
-                            <div class="col-2"></div>
-                            <div class="col-8">
-                                <div class="input-group input-group-lg">
-                                    <span class="input-group-text" id="inputGroup-sizing-lg">Pronto</span>
-                                    <input type="date" name="pronto" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row mt-5">
-                            <div class="col-2"></div>
-                            <div class="col-8">
-                                <div class="input-group input-group-lg">
-                                    <span class="input-group-text" id="inputGroup-sizing-lg">Entregue</span>
-                                    <input type="date" name="entregue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
-                                </div>
-                            </div>
-                        </div>
-
                         <div class="row mt-5 mb-5">
                             <div class="col-7"></div>
                             <div class="col-2">
                                 
-                                    <a class="text-decoration-none" href="/servicos">
+                                    <a class="text-decoration-none" href="/funcionarios">
                                         <button type="button" class="btn btn-outline-danger">CANCELAR</button>
                                     </a>
                                 

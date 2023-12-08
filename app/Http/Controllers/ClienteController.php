@@ -8,12 +8,11 @@ use App\Models\Carro;
 
 class ClienteController extends Controller{
     public function viewCadastroClientes(){
-        // Exibe o formulário para adicionar um novo cliente
         return view('cadastroClientes');
     }
 
     public function viewClientes(){
-        // Função para SELECT * FROM clientes
+
         $clientes = Cliente::all();
         return view('clientes', ['clientes' => $clientes]);
     }
@@ -29,4 +28,25 @@ class ClienteController extends Controller{
         ]);
         return redirect()->route('clientes.index')->with('success', 'Cliente adicionado com sucesso!');
     }
+    public function edit($id)
+    {
+        $cliente = Cliente::find($id);
+
+        return view('editarCliente', ['cliente' => $cliente]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $cliente = Cliente::find($id);
+
+        $cliente->update([
+            'telefone' => $request->input('telefone'),
+            'email' => $request->input('email'),
+            'cpf' => $request->input('cpf'),
+            'endereco' => $request->input('endereco'),
+        ]);
+
+        return redirect()->route('clientes.index')->with('success', 'Cliente atualizado com sucesso!');
+    }
+
 }

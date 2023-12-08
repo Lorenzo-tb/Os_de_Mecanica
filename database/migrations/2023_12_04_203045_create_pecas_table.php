@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('pecas', function (Blueprint $table) {
             $table->id();
             $table->string('nome', 45);
-            $table->integer('quantidade');
             $table->double('preco');
             $table->timestamps();
         });

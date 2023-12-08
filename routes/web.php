@@ -23,10 +23,17 @@ Route::get('/', function(){
 Route::get('/cadastroClientes', [ClienteController::class, 'viewCadastroClientes']);
 Route::post('/cadastroClientes', [ClienteController::class, 'store'])->name('clientes.insert');
 Route::get('/clientes', [ClienteController::class, 'viewClientes'])->name('clientes.index');
+Route::get('/clientes/{id}/edit', [ClienteController::class, 'edit'])->name('clientes.edit');
+Route::put('/clientes/{id}', [ClienteController::class, 'update'])->name('clientes.update');
+
+
 
 Route::get('/funcionarios', [FuncionarioController::class, 'viewFuncionarios'])->name('funcionarios.index');
 Route::get('/cadastroFuncionarios', [FuncionarioController::class, 'viewCadastroFuncionarios']);
 Route::post('/cadastroFuncionarios', [FuncionarioController::class, 'store'])->name('funcionarios.insert');
+Route::get('/funcionarios/{id}/edit', [FuncionarioController::class, 'edit'])->name('funcionarios.edit');
+Route::put('/funcionarios/{id}', [FuncionarioController::class, 'update'])->name('funcionarios.update');
+
 
 Route::get('/pecas', [PecaController::class, 'viewPecas'])->name('pecas.index');
 Route::get('/cadastroPecas', [PecaController::class, 'viewCadastroPecas']);
@@ -42,3 +49,6 @@ Route::post('/cadastroCarros', [CarroController::class, 'store'])->name('carros.
 Route::get('/servicos', [ServicoController::class, 'viewServicos'])->name('servicos.index');
 Route::get('/cadastroServicos', [ServicoController::class, 'viewCadastroServicos']);
 Route::post('/cadastroServicos', [ServicoController::class, 'store'])->name('servicos.insert');
+Route::get('/servicos/detalhes/{id}', [ServicoController::class, 'detalhes'])->name('detalhesServico');
+Route::put('/servicos/{id}', [ServicoController::class, 'atualizar'])->name('atualizarServico');
+Route::delete('/servicos/{id}', [ServicoController::class, 'destroy'])->name('servicos.destroy');

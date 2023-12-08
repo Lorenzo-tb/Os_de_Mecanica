@@ -63,21 +63,22 @@
         <div class="row">
                 <div class="col-1"></div>
                 <div class="col-10 rounded bg-white">
-                    <form action="{{ route('clientes.insert') }}" method="post">
+                <form action="{{ route('clientes.update', ['id' => $cliente->id]) }}" method="post">
                         @csrf 
+                        @method('put')
                         <div class="row mt-5">
                             <div class="col-1"></div>
                             <div class="col-4">
                                 <div class="input-group input-group-lg">
                                     <span class="input-group-text" id="inputGroup-sizing-lg">Nome</span>
-                                    <input type="text" id="nome" name="nome" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" required>
+                                    <input value="{{$cliente->nome}}" type="text" id="nome" name="nome" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" readonly required>
                                 </div>
                             </div>
                             <div class="col-2"></div>
                             <div class="col-4">
                                 <div class="input-group input-group-lg">
                                     <span class="input-group-text" id="inputGroup-sizing-lg">Telefone</span>
-                                    <input type="text" id="telefone" name="telefone" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" required>
+                                    <input value="{{$cliente->telefone}}" type="text" id="telefone" name="telefone" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" required>
                                 </div>
                             </div>
                         </div>
@@ -87,14 +88,14 @@
                             <div class="col-4">
                                 <div class="input-group mb-3 input-group-lg">
                                     <span class="input-group-text" id="basic-addon1">E-mail @</span>
-                                    <input type="text" id="email" name="email" class="form-control" aria-label="Username" aria-describedby="basic-addon1" required>
+                                    <input value="{{$cliente->email}}" type="text" id="email" name="email" class="form-control" aria-label="Username" aria-describedby="basic-addon1" required>
                                 </div>
                             </div>
                             <div class="col-2"></div>
                             <div class="col-4">
                                 <div class="input-group mb-3 input-group-lg">
                                     <span class="input-group-text" id="basic-addon1">CPF</span>
-                                    <input type="text" id="cpf" name="cpf" class="form-control" aria-label="Username" aria-describedby="basic-addon1" required>
+                                    <input value="{{$cliente->cpf}}" type="text" id="cpf" name="cpf" class="form-control" aria-label="Username" aria-describedby="basic-addon1" required>
                                 </div>
                             </div>
                         </div>
@@ -104,7 +105,7 @@
                             <div class="col-8">
                                 <div class="input-group mb-3 input-group-lg">
                                     <span class="input-group-text" id="basic-addon1">Endereço</span>
-                                    <input type="text" id="endereco" name="endereco" class="form-control" aria-label="Username" aria-describedby="basic-addon1" required>
+                                    <input value="{{$cliente->endereco}}" type="text" id="endereco" name="endereco" class="form-control" aria-label="Username" aria-describedby="basic-addon1" required>
                                 </div>
                             </div>
                         </div>
@@ -128,3 +129,4 @@
     </body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </html>
+

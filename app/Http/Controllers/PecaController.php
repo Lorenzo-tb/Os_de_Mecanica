@@ -21,7 +21,6 @@ class PecaController extends Controller
     public function store(Request $request){
         Peca::create([
             'nome' => $request->input('nome'),
-            'quantidade' => $request->input('quantidade'),
             'preco' => $request->input('preco')
         ]);
         return redirect()->route('pecas.index')->with('success', 'Peca adicionada com sucesso!');

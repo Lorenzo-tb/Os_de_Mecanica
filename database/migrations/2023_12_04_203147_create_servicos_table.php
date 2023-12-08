@@ -16,7 +16,6 @@ return new class extends Migration
             $table->date('entrada');
             $table->text('defeito');
             $table->text('conserto');
-            $table->double('orcamento');
             $table->double('total');
             $table->tinyInteger('aprovado');
             $table->date('pronto');
@@ -25,6 +24,8 @@ return new class extends Migration
             $table->foreign('equipe_id')->references('id')->on('equipes');
             $table->unsignedBigInteger('carro_id'); 
             $table->foreign('carro_id')->references('id')->on('carros'); 
+            $table->unsignedBigInteger('peca_id'); 
+            $table->foreign('peca_id')->references('id')->on('pecas'); 
             $table->timestamps();
         });
     }

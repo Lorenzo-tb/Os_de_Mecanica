@@ -5,7 +5,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body class="antialiased">
-    <nav class="navbar navbar-expand-lg bg-dark meu-nav">
+    <nav class="navbar navbar-expand-lg bg-dark meu-nav sticky-top">
         <div class="container-fluid">
             <div class="container">
                 <a class="navbar-brand" href="/">
@@ -23,10 +23,10 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="/cadastroFuncionarios">Funcionários</a></li>
+                            <li><a class="dropdown-item" href="/cadastroEquipes">Equipe</a></li>
                             <li><a class="dropdown-item" href="/cadastroPecas">Peça</a></li>
                             <li><a class="dropdown-item" href="/cadastroClientes">Cliente</a></li>
                             <li><a class="dropdown-item" href="/cadastroCarros">Carro</a></li>
-                            <li><a class="dropdown-item" href="/cadastroEquipes">Equipe</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown me-5">
@@ -71,21 +71,17 @@
                 <div class="col-1"></div>
                 <div class="col-1"><h2 class="ms-4"> Peça:</h2></div>
                 <div class="col-2"><h2 class="text-danger">{{$peca->nome}}</h2></div>
-                <div class="col-2"></div>
-                <div class="col-2">
-                    <div>
-                        <h4> Quantidade: {{$peca->quantidade}}</h4>
+                <div class="col-1"></div>
+                <div class="col-4 row">
+                    <div class="col-1">
+                        <h4>R$</h4>
+                    </div>
+                    <div class="col-1">
                         <h4 class="text-danger">R${{$peca->preco}}</h4>
                     </div>
+                    
                 </div>
-                <div class="col-2"></div>
-                <div class="col-1">
-                    <form action="{{ route('adm.login') }}" method="post"> <!--colocar rota-->
-                        <button type="submit"class="bg-transparent border-0">
-                            <img src="{{ asset('images/PlusSquare.png') }}"  alt="Bootstrap" width="50" height="50">
-                        </button>
-                    </form>
-                </div>
+
             </div>
 
             <div class="row">

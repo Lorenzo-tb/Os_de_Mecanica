@@ -6,7 +6,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body class="antialiased">
-        <nav class="navbar navbar-expand-lg bg-dark meu-nav">
+        <nav class="navbar navbar-expand-lg bg-dark meu-nav sticky-top">
             <div class="container-fluid">
                 <div class="container">
                     <a class="navbar-brand" href="/">
@@ -24,10 +24,10 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="/cadastroFuncionarios">Funcionários</a></li>
+                                <li><a class="dropdown-item" href="/cadastroEquipes">Equipe</a></li>
                                 <li><a class="dropdown-item" href="/cadastroPecas">Peça</a></li>
                                 <li><a class="dropdown-item" href="/cadastroClientes">Cliente</a></li>
                                 <li><a class="dropdown-item" href="/cadastroCarros">Carro</a></li>
-                                <li><a class="dropdown-item" href="/cadastroEquipes">Equipe</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown me-5">

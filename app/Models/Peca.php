@@ -11,5 +11,5 @@ class Peca extends Model
 
     protected $table = 'pecas';
     protected $primaryKey = 'id';
-    protected $fillable = ['nome', 'quantidade', 'preco'];
+    protected $fillable = ['nome', 'preco'];
 }

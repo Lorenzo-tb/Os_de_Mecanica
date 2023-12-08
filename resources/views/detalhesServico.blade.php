@@ -72,18 +72,19 @@
                                 <h2>N: </h2>
                             </div>
                             <div class="col-6">
-                                <h2 class="text-danger">{{$servicoAtual}}</h2>
+                                <h2 class="text-danger">{{$servico->id}}</h2>
                             </div>
                         </div>
                     </div>
-                    <form action="{{ route('servicos.insert') }}" method="post">
+                    <form action="{{ route('atualizarServico', ['id' => $servico->id]) }}" method="post">
                         @csrf 
+                        @method('put')
                         <div class="row mt-5">
                             <div class="col-2"></div>
                             <div class="col-8">
                                 <div class="input-group input-group-lg">
                                     <span class="input-group-text" id="inputGroup-sizing-lg">Entrada</span>
-                                    <input type="date" name="entrada" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" required>
+                                    <input value="{{$servico->entrada}}" type="date" name="entrada" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" required>
                                 </div>
                             </div>
                         </div>
@@ -94,9 +95,7 @@
                                 <div class="input-group input-group-lg">
                                     <label class="input-group-text" for="inputGroupSelect01">Carro</label>
                                     <select class="form-select" id="inputGroupSelect01" name="carro_id" required>
-                                        @foreach($carros as $carro)
-                                            <option value="{{ $carro->id }}">{{ $carro->modelo }}| Placa: {{$carro->placa}}</option>
-                                        @endforeach
+                                            <option value="{{ $servico->carro->id }}">{{ $servico->carro->modelo }}| Placa: {{$servico->carro->placa}}</option>
                                     </select>
                                 </div>
                             </div>
@@ -107,7 +106,7 @@
                             <div class="col-8">
                                 <div class="input-group">
                                     <span class="input-group-text">Defeito</span>
-                                    <textarea class="form-control" name="defeito" aria-label="With textarea" required></textarea>
+                                    <textarea class="form-control" name="defeito" aria-label="With textarea" required>{{$servico->defeito}}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -117,7 +116,7 @@
                             <div class="col-8">
                                 <div class="input-group">
                                     <span class="input-group-text">Conserto</span>
-                                    <textarea class="form-control" name="conserto" aria-label="With textarea" required></textarea>
+                                    <textarea class="form-control" name="conserto" aria-label="With textarea" required>{{$servico->conserto}}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -155,7 +154,7 @@
                             <div class="col-8">
                                 <div class="input-group input-group-lg">
                                     <span class="input-group-text" id="inputGroup-sizing-lg">Total</span>
-                                    <input type="number" name="total" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" required>
+                                    <input value="{{$servico->total}}" type="number" name="total" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" required>
                                 </div>
                             </div>
                         </div>
@@ -179,7 +178,7 @@
                             <div class="col-8">
                                 <div class="input-group input-group-lg">
                                     <span class="input-group-text" id="inputGroup-sizing-lg">Pronto</span>
-                                    <input type="date" name="pronto" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                                    <input value="{{$servico->pronto}}" type="date" name="pronto" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
                                 </div>
                             </div>
                         </div>
@@ -189,19 +188,24 @@
                             <div class="col-8">
                                 <div class="input-group input-group-lg">
                                     <span class="input-group-text" id="inputGroup-sizing-lg">Entregue</span>
-                                    <input type="date" name="entregue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                                    <input value="{{$servico->entregue}}" type="date" name="entregue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
                                 </div>
                             </div>
                         </div>
 
                         <div class="row mt-5 mb-5">
-                            <div class="col-7"></div>
+                            <div class="col-5"></div>
                             <div class="col-2">
-                                
-                                    <a class="text-decoration-none" href="/servicos">
-                                        <button type="button" class="btn btn-outline-danger">CANCELAR</button>
-                                    </a>
-                                
+                                <form action="{{ route('servicos.destroy', ['id' => $servico->id]) }}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn btn-danger">Excluir</button>
+                                </form>
+                            </div>
+                            <div class="col-2">
+                                <a class="text-decoration-none" href="/servicos">
+                                    <button type="button" class="btn btn-outline-danger">CANCELAR</button>
+                                </a>
                             </div>
                             <div class="col-2">
                                 <button class="btn btn-outline-success" type="submit">SALVAR</button>

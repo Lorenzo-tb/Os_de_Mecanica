@@ -5,7 +5,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body class="antialiased">
-        <nav class="navbar navbar-expand-lg bg-dark meu-nav">
+        <nav class="navbar navbar-expand-lg bg-dark meu-nav sticky-top">
             <div class="container-fluid">
                 <div class="container">
                     <a class="navbar-brand" href="/">
@@ -23,10 +23,10 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="/cadastroFuncionarios">Funcionários</a></li>
+                                <li><a class="dropdown-item" href="/cadastroEquipes">Equipe</a></li>
                                 <li><a class="dropdown-item" href="/cadastroPecas">Peça</a></li>
                                 <li><a class="dropdown-item" href="/cadastroClientes">Cliente</a></li>
                                 <li><a class="dropdown-item" href="/cadastroCarros">Carro</a></li>
-                                <li><a class="dropdown-item" href="/cadastroEquipes">Equipe</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown me-5">
@@ -72,18 +72,31 @@
                     <img src="{{ asset('images/PersonCircle.png') }}"  alt="Bootstrap" width="50" height="50">
                 </div>
                 <div class="col-1"><h2 class="ms-4"> Nome:</h2></div>
-                <div class="col-2"><h2 class="text-danger">{{$cliente->nome}}</h2></div>
-                <div class="col-3">
-                    <div>
-                        <h3> Telefone: {{$cliente->telefone}}</h3>
+                <div class="col-1"><h2 class="text-danger">{{$cliente->nome}}</h2></div>
+                <div class="col-3 row">
+                    <div class="col-1"></div>
+                    <div class="col-4">
+                        <h4> Telefone: </h4>
                     </div>
+                    <div class="col-6">
+                        <h4 class="text-danger">{{$cliente->telefone}}</h4>
+                    </div>
+                    
                 </div>
-                <div class="col-2"></div>
+                <div class="col-3">
+                    <a class="nav-link dropdown-toggle mt-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Carros
+                    </a>
+                    <ul class="dropdown-menu">
+                        @foreach($cliente->carros as $carro)
+                            <li>{{$carro->modelo}}| Placa: {{ $carro->placa }}</li>
+                        @endforeach
+                    </ul>  
+                </div>
                 <div class="col-1">
-                    <a href="/" class="bg-transparent border-0">
+                <a href="{{ route('clientes.edit', ['id' => $cliente->id]) }}" class="bg-transparent border-0">
                         <img src="{{ asset('images/Pencil.png') }}"  alt="Bootstrap" width="50" height="50">
                     </a>
-
                 </div>
             </div>
 

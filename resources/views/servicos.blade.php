@@ -1,12 +1,128 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    </head>
     <body class="antialiased">
-        <h1>servicos</h1>
+        <nav class="navbar navbar-expand-lg bg-dark sticky-top">
+            <div class="container-fluid">
+                <div class="container">
+                    <a class="navbar-brand" href="/">
+                        <img src="{{ asset('images/logo.png') }}" alt="Bootstrap" width="50" height="50">
+                    </a>
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse me-5" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 me-5">
+                        <li class="nav-item dropdown me-5">
+                            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Cadastrar
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/cadastroFuncionarios">Funcionários</a></li>
+                                <li><a class="dropdown-item" href="/cadastroEquipes">Equipe</a></li>
+                                <li><a class="dropdown-item" href="/cadastroPecas">Peça</a></li>
+                                <li><a class="dropdown-item" href="/cadastroClientes">Cliente</a></li>
+                                <li><a class="dropdown-item" href="/cadastroCarros">Carro</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown me-5">
+                            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Serviços
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/servicos">Lista</a></li>
+                                <li><a class="dropdown-item" href="/cadastroServicos">Novo Serviço</a></li>
+
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown me-5">
+                            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Listas
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/funcionarios">Funcionçários</a></li>
+                                <li><a class="dropdown-item" href="/equipes">Equipes</a></li>
+                                <li><a class="dropdown-item" href="/clientes">Clientes</a></li>
+                                <li><a class="dropdown-item" href="/pecas">Peças</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="bg-secondary mb-5 row">
+            <div class="col-1"></div>
+            <div class="col-1">
+                <h1 class="text-white titulo mt-2 ms-3">Serviços</h1>
+            </div>
+            <div class="col-8"></div>
+            <div class="col-1 mt-2">
+                <a class="navbar-brand" href="/cadastroServicos">
+                    <img src="{{ asset('images/PlusCircle.png') }}" alt="Bootstrap" width="50" height="50">
+                </a>
+            </div>
+        </div>
         @foreach($servicos as $servico)
-            <h3>ID: {{$servico->id}}</h3>
-            <p>Equipe: {{$servico->equipe->nome}}</p>
-            <p>Carro: {{$servico->carro->placa}}</p>
+        <a href="{{ route('detalhesServico', ['id' => $servico->id]) }}" class="servico-link text-decoration-none">
+            <div class="row mb-2 mt-2">
+                <div class="col-1"></div>
+                <div class="col-1">
+                    <img src="{{ asset('images/CardList.png') }}"  alt="Bootstrap" width="50" height="50">
+                </div>
+                <div class="col-2 row">
+                    <div class="row">
+                        <div class="col-2">
+                            <h4 class="text-dark">N: </h4>
+                        </div>
+                        <div class="col-6">
+                        <h4 class="text-danger">{{$servico->id}}</h4>
+                        </div>
+                    </div>
+                    <div class="col-8">
+                        <h2 class="ms-4 text-dark"> Cliente:</h2>
+                    </div>
+                    <div class="col-4">
+                        <h2 class="text-danger">{{$servico->carro->cliente->nome}}</h2>
+                    </div>
+                </div>
+                <div class="col-1"></div>
+                <div class="col-3 row mt-4">
+                    <div class="col-3">
+                        <h4 class="text-dark"> Veículo: </h4>
+                    </div>
+                    <div class="col-9">
+                        <h4 class="text-danger">{{$servico->carro->modelo}}| Placa: {{$servico->carro->placa}}</h4>
+                    </div>
+                    
+                </div>
+                <div class="col-3 row mt-4">
+                    <div class="col-5">
+                        <h4 class="text-dark">Estado:</h4>
+                    </div>
+                    <div>
+                        @if($servico->aprovado == 1 && $servico->pronto == null)
+                            <h4 class="text-danger">Em andamento</h4>
+                        @elseif($servico->aprovado == 0)
+                            <h4 class="text-danger">Recusado</h4>
+                        @elseif($servico->aprovado == 2)
+                            <h4 class="text-danger">Esperando aprovação</h4>
+                        @elseif($servico->aprovado == 1 && $servico->pronto != null)
+                            <h4 class="text-danger">Pronto</h4>
+                        @endif
+                    </div>
+                    
+                </div>
+            </div>
+            </a>
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col-10"><hr></div>
+            </div>  
         @endforeach
-        <a href="/cadastroServicos">Ir para Registrar</a>
     </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </html>
